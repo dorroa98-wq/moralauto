@@ -3,19 +3,19 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#04060a">
-<link rel="canonical" href="https://moralauto.ru/">
 <title>MORAL AUTO</title>
 <meta name="description" content="MORAL AUTO: привоз автомобилей из Европы, США, Китая и Кореи под ключ. Подбор, таможня, учёт, комиссионная продажа.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="MORAL AUTO — привоз автомобилей под ключ">
 <meta property="og:description" content="Корея, Китай, Европа, США. Подбор, проверка, таможня, учёт и комиссионная продажа.">
-<meta property="og:image" content="https://moralauto.ru/img/og.jpg">
+<meta property="og:image" content="https://moralauto.ru/img/og2.jpg">
 <meta property="og:url" content="https://moralauto.ru/">
 <link rel="icon" href="img/logo.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700;800&family=Manrope:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap">
+</head>
+<body>
 <style>
 /* Layout: one dark "night garage" — neon wordmark, thin blue light lines, everything else quiet */
 :root{
@@ -374,8 +374,6 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </style>
 
 <div class="progress" id="progress" aria-hidden="true"></div>
-</head>
-<body>
 <header class="nav" id="nav">
   <div class="wrap">
     <a class="brand" href="#top">MORAL <b>AUTO</b></a>
@@ -387,7 +385,118 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 </header>
 
 <main id="top">
-  <section class="hero" style="padding-block:0">
+  <style>
+#mfilm{position:relative;padding:0}
+.mfstage{position:sticky;top:0;height:100vh;height:100svh;overflow:hidden;background:#000}
+.mfstage video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;will-change:opacity,transform,filter}
+.mfflash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none;mix-blend-mode:screen}
+.mfvig{position:absolute;inset:0;pointer-events:none;background:radial-gradient(120% 90% at 50% 50%,transparent 55%,rgba(0,0,0,.55));}
+.mfcap{position:absolute;left:max(5vw,20px);bottom:max(9vh,64px);font:500 clamp(22px,3.4vw,44px)/1.1 Unbounded,sans-serif;max-width:min(80vw,720px);text-wrap:balance;opacity:0;transform:translateY(14px);transition:opacity .5s,transform .5s;text-shadow:0 2px 24px rgba(0,0,0,.7)}
+.mfcap.on{opacity:1;transform:none}
+.mfcap small{display:block;font:600 14px/1.4 Manrope,sans-serif;color:var(--neon);margin-bottom:10px}
+.mfdots{position:absolute;right:max(2.4vw,14px);top:50%;transform:translateY(-50%);display:grid;gap:10px}
+.mfdots i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.28);transition:background .3s,transform .3s}
+.mfdots i.on{background:var(--neon);transform:scale(1.5);box-shadow:0 0 10px var(--neon)}
+.mfhint{z-index:3;position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:14px;color:var(--muted);transition:opacity .6s;display:flex;flex-direction:column;align-items:center;gap:6px}
+.mfhint b{width:1px;height:28px;background:linear-gradient(var(--neon),transparent);animation:mfdr 1.6s infinite}
+@keyframes mfdr{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+.mfskip{position:absolute;left:max(2.4vw,14px);top:calc(84px + env(safe-area-inset-top,0px));min-height:44px;padding:0 18px;border:1px solid rgba(255,255,255,.25);border-radius:22px;background:rgba(0,0,0,.35);color:var(--fg);font:600 14px Manrope,sans-serif;cursor:pointer;backdrop-filter:blur(6px)}
+.mfskip:focus-visible,.mfcta:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+.mffin{position:absolute;inset:0;display:grid;place-items:center;align-content:center;gap:34px;background:radial-gradient(60% 50% at 50% 50%,rgba(95,184,255,.12),transparent 70%),var(--bg);opacity:0;pointer-events:none;text-align:center;padding:24px}
+.mffin.on{pointer-events:auto}
+.mffin img{width:min(560px,78vw);height:auto;filter:drop-shadow(0 0 30px rgba(95,184,255,.25))}
+.mfcta{display:inline-flex;align-items:center;min-height:56px;padding:0 34px;border-radius:28px;background:var(--neon);color:#04060a;font:700 16px Unbounded,sans-serif;text-decoration:none;box-shadow:0 0 40px rgba(95,184,255,.45)}
+.mfload{position:absolute;inset:0;display:grid;place-items:center;background:#000;color:var(--muted);font-size:14px;transition:opacity .6s}
+@media(prefers-reduced-motion:reduce){.mfhint b{animation:none}.mfcap{transition:none}}
+</style>
+<section id="mfilm">
+  <div class="mfstage" id="mfstage">
+    <div class="mfflash" id="mfflash"></div>
+    <div class="mfvig"></div>
+    <div class="mfcap" id="mfcap"></div>
+    <div class="mfdots" id="mfdots"></div>
+    <div class="mfhint" id="mfhint">Листайте<b></b></div>
+    <button class="mfskip" id="mfskip" type="button">Пропустить</button>
+    <div class="mffin" id="mffin">
+      <img src="film/logo.png" alt="Moral Auto">
+      <a class="mfcta" href="https://t.me/imoscowbear">Подобрать авто</a>
+    </div>
+    <div class="mfload" id="mfload">Загружаем фильм…</div>
+  </div>
+</section>
+<script>
+{
+const CH=[
+ ['01',1.1,['Moral Auto','Привозим авто под ключ']],
+ ['02',1.0,null,'flash'],
+ ['03',1.1,['Шаг 1','Находим и выкупаем авто']],
+ ['04',0.8,null,'cut'],
+ ['05',1.0,['Шаг 2','Доставляем в порт'],'blur'],
+ ['06',0.8,null,'cut'],
+ ['07',1.1,['Шаг 3','Грузим в контейнер']],
+ ['08',0.9,null],
+ ['09',1.1,['Шаг 4','Везём в Россию']],
+ ['10',1.2,['Шаг 5','Растаможиваем и привозим в Москву']],
+ ['11',1.0,null],
+ ['12',1.1,['Шаг 6','Ключи у вас'],'fade'],
+ ['fin',0.9,null,'fade']
+];
+const VH=280;
+const film=document.getElementById('mfilm'),stage=document.getElementById('mfstage');
+const cap=document.getElementById('mfcap'),dots=document.getElementById('mfdots'),fin=document.getElementById('mffin');
+const flash=document.getElementById('mfflash'),hint=document.getElementById('mfhint'),load=document.getElementById('mfload');
+const total=CH.reduce((s,c)=>s+c[1],0);
+film.style.height=(total*VH+100)+'vh';
+const dir=innerHeight>innerWidth*1.05?'m':'d';
+const vids=CH.slice(0,12).map(c=>{const v=document.createElement('video');v.muted=true;v.playsInline=true;v.setAttribute('playsinline','');v.setAttribute('muted','');v.preload='auto';v.dataset.src='film/'+dir+'/'+c[0]+'.mp4';stage.insertBefore(v,flash);return v});
+dots.innerHTML=CH.map(()=>'<i></i>').join('');
+const di=[...dots.children];
+let primed=false;
+const ens=k=>{const v=vids[k];if(v&&!v.getAttribute('src')){v.src=v.dataset.src;if(primed){const p=v.play();if(p)p.then(()=>v.pause()).catch(()=>{})}}};
+ens(0);ens(1);ens(2);
+let ready=0;const done=()=>{if(++ready>=2)load.style.opacity=0,setTimeout(()=>load.remove(),700)};
+vids[0].addEventListener('loadeddata',done,{once:true});vids[1].addEventListener('loadeddata',done,{once:true});
+setTimeout(()=>{load.style.opacity=0},6000);
+const prime=()=>{primed=true;vids.filter(v=>v.getAttribute('src')).forEach(v=>{const p=v.play();if(p)p.then(()=>v.pause()).catch(()=>{})});removeEventListener('touchstart',prime)};
+addEventListener('touchstart',prime,{passive:true});
+const starts=[];{let s=0;CH.forEach(c=>{starts.push(s);s+=c[1]})}
+let target=0,cur=0,lastCap=-1,lastI=-1;
+const prog=()=>{const r=film.getBoundingClientRect();const h=film.offsetHeight-innerHeight;return Math.min(1,Math.max(0,-r.top/h))*total};
+addEventListener('scroll',()=>{target=prog();if(target>0.05)hint.style.opacity=0},{passive:true});
+document.getElementById('mfskip').onclick=()=>{scrollTo({top:(film.getBoundingClientRect().top+scrollY)+film.offsetHeight-innerHeight,behavior:'auto'})};
+const TR=0.12;
+function render(p){
+  let i=CH.length-1;for(let k=0;k<CH.length;k++){if(p<starts[k]+CH[k][1]){i=k;break}}
+  const f=Math.min(1,Math.max(0,(p-starts[i])/CH[i][1]));
+  const type=CH[i][3];
+  ens(i);ens(i+1);ens(i+2);
+  vids.forEach((v,k)=>{if(k!==i&&k!==i-1){v.style.opacity=0}});
+  let fadeIn=1;
+  if(i>0&&type&&type!=='cut'&&f<TR){fadeIn=f/TR}
+  if(i<12){
+    const v=vids[i];
+    if(v.readyState>=1&&v.duration){const t=Math.min(v.duration-0.04,f*v.duration);if(Math.abs(v.currentTime-t)>0.02)v.currentTime=t}
+    v.style.opacity=type==='flash'?1:fadeIn;
+    v.style.filter=type==='blur'&&f<TR?`blur(${(1-fadeIn)*14}px)`:'none';
+    v.style.transform=type==='blur'&&f<TR?`scale(${1.06-0.06*fadeIn})`:'none';
+    v.style.zIndex=2;
+  }
+  if(i>0&&i-1<12){const pv=vids[i-1];pv.style.zIndex=1;pv.style.filter='none';pv.style.transform='none';
+    if(pv.duration&&pv.currentTime<pv.duration-0.06)pv.currentTime=pv.duration-0.04;
+    pv.style.opacity=fadeIn<1?1:0}
+  flash.style.opacity=type==='flash'&&f<0.18?(1-f/0.18)*0.9:0;
+  const fo=i===12?Math.min(1,f/0.35):0;fin.style.opacity=fo;fin.classList.toggle('on',fo>0.6);
+  if(i===12)vids[11].style.opacity=1-fo;
+  let ci=-1;for(let k=i;k>=0;k--){if(CH[k][2]){ci=k;break}}
+  if(i===12)ci=-1;
+  if(ci!==lastCap){lastCap=ci;cap.classList.remove('on');setTimeout(()=>{if(lastCap!==ci)return;cap.innerHTML=ci<0?'':`<small>${CH[ci][2][0]}</small>${CH[ci][2][1]}`;if(ci>=0)cap.classList.add('on')},260)}
+  if(i!==lastI){lastI=i;di.forEach((d,k)=>d.classList.toggle('on',k===i))}
+}
+function tick(){cur+=(target-cur)*0.08;if(Math.abs(target-cur)<0.0005)cur=target;render(cur);requestAnimationFrame(tick)}
+target=cur=prog();requestAnimationFrame(tick);
+}
+</script>
+<section class="hero" style="padding-block:0" hidden>
     <div class="hero-bg" aria-hidden="true">
       <div class="pane d"><video muted loop playsinline preload="none" poster="video/p1.jpg" data-src="video/p1.mp4"></video></div>
       <div class="pane d"><video muted loop playsinline preload="none" poster="video/p2.jpg" data-src="video/p2.mp4"></video></div>
@@ -1120,5 +1229,5 @@ const upd=()=>{bs[0].disabled=st.scrollLeft<8;bs[1].disabled=st.scrollLeft+st.cl
 bs.forEach(b=>b.addEventListener('click',()=>{const c=st.querySelector('.sold-card');st.scrollBy({left:(c.offsetWidth+20)*+b.dataset.d,behavior:'smooth'})}));
 st.addEventListener('scroll',upd,{passive:true});addEventListener('resize',upd);upd();})();
 </script>
-</body>
-</html>
+
+</body></html>
