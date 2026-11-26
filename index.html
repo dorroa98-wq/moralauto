@@ -433,7 +433,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
       <div class="mfcap" id="mfcap"></div>
       <a class="btn btn-primary btn-sm" href="https://t.me/imoscowbear" target="_blank" rel="noopener">Подобрать авто</a>
     </div>
-    <button class="mfnext" id="mfnext" type="button">Дальше<i></i></button>
+    <button class="mfnext" id="mfnext" type="button">Листайте дальше<i></i></button>
     <button class="mfskip" id="mfskip" type="button">Пропустить</button>
     <div class="mfload" id="mfload">Загружаем…</div>
   </div>
@@ -474,7 +474,7 @@ function go(i){
   const my=++token;const list=SC[i].v;
   const playK=k=>{
     if(my!==token)return;
-    if(k>=list.length){playing=false;next.classList.add('on');next.firstChild.textContent=i===SC.length-1?'К разделам сайта':'Дальше';return}
+    if(k>=list.length){playing=false;next.classList.add('on');next.firstChild.textContent=i===SC.length-1?'Листайте к разделам сайта':'Листайте дальше';return}
     const v=V[list[k]];v.playbackRate=RATE;
     try{v.currentTime=0}catch(e){}
     const start=()=>{if(my!==token)return;show(v)};
@@ -485,17 +485,17 @@ function go(i){
   playK(0);
 }
 function release(){released=true;playing=false;next.classList.remove('on');scrollTo({top:film.offsetTop+film.offsetHeight,behavior:'smooth'})}
-function forward(){if(playing)return;if(scene<SC.length-1)go(scene+1);else release()}
-function back(){if(playing){go(scene);return}if(scene>=0)go(scene-1)}
+function forward(){if(scene<SC.length-1)go(scene+1);else release()}
+function back(){if(scene>=0)go(scene-1)}
 const locked=()=>!released&&scrollY<=film.offsetTop+2;
-let lastWheel=0;
+let lastWheel=0,armed=true,acc=0;
 addEventListener('wheel',e=>{
-  if(released&&scrollY<=film.offsetTop+1&&e.deltaY<0){released=false;e.preventDefault();lastWheel=performance.now();return}
+  const now=performance.now();if(now-lastWheel>220){armed=true;acc=0}lastWheel=now;
+  if(released&&scrollY<=film.offsetTop+1&&e.deltaY<0){released=false;armed=false;e.preventDefault();return}
   if(!locked())return;
   e.preventDefault();
-  const now=performance.now(),gap=now-lastWheel;lastWheel=now;
-  if(gap<260||Math.abs(e.deltaY)<4)return;
-  if(e.deltaY>0)forward();else back();
+  if(!armed)return;acc+=e.deltaY;if(Math.abs(acc)<12)return;armed=false;
+  if(acc>0)forward();else back();
 },{passive:false});
 let ty=null;
 addEventListener('touchstart',e=>{ty=e.touches[0].clientY;if(released&&scrollY<=film.offsetTop+1)ty=ty},{passive:true});
